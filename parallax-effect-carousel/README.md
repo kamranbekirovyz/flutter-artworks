@@ -1,6 +1,6 @@
 # parallax-effect-carousel
 
-UI & Design: <a href="https://dribbble.com/shots/5689566-Van-Gogh-museum-application">Albee Shen</a>
+UI & Design: <a href="https://dribbble.com/shots/5689566-Van-Gogh-museum-application">Albee Shen</a><br/>
 Code inspiration: <a href="https://github.com/MahmoudHesham099/Flutter-Parallax">MahmoudHesham099</a>
 
 <br/>
