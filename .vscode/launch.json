@@ -1,0 +1,28 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "parallax-effect-carousel",
+            "cwd": "parallax-effect-carousel",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "parallax-effect-carousel (profile mode)",
+            "cwd": "parallax-effect-carousel",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "parallax-effect-carousel (release mode)",
+            "cwd": "parallax-effect-carousel",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}
