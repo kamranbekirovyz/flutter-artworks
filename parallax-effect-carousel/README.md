@@ -1,16 +1,8 @@
-# parallax
+# parallax-effect-carousel
 
-A new Flutter project.
+UI & Design: <a href="https://dribbble.com/shots/5689566-Van-Gogh-museum-application">Albee Shen</a>
+Code inspiration: <a href="https://github.com/MahmoudHesham099/Flutter-Parallax">MahmoudHesham099</a>
 
-## Getting Started
+<br/>
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<img src="https://github.com/porelarte/flutter-artworks/blob/master/parallax-effect-carousel/_external/example.gif?raw=true"> 
