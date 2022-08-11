@@ -1,8 +1,8 @@
 # parallax-effect-carousel
 
-UI & Design: <a href="https://dribbble.com/shots/5689566-Van-Gogh-museum-application">Albee Shen</a><br/>
+UI & Design: <a href="https://dribbble.com/shots/5689566-Van-Gogh-museum-application">Albee Shen</a>
 Code inspiration: <a href="https://github.com/MahmoudHesham099/Flutter-Parallax">MahmoudHesham099</a>
 
 <br/>
 
-<img src="https://s4.gifyu.com/images/example-compressed.gif"> 
+<img src="https://s4.gifyu.com/images/example-compressed.gif" alt="example.gif"> 
