@@ -5,4 +5,4 @@ Code inspiration: <a href="https://github.com/MahmoudHesham099/Flutter-Parallax"
 
 <br/>
 
-<img src="https://github.com/porelarte/flutter-artworks/blob/master/parallax-effect-carousel/_external/example.gif?raw=true"> 
+<img src="https://s4.gifyu.com/images/example-compressed.gif"> 
