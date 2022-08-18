@@ -1,11 +1,11 @@
 import 'package:app/app/data/painting.dart';
-import 'package:app/app/view/magical_hero.dart';
+import 'package:app/app/widgets/magical_hero.dart';
 import 'package:flutter/material.dart';
 
-class FullPaintingScreen extends StatelessWidget {
+class FullPaintingView extends StatelessWidget {
   final Painting painting;
 
-  const FullPaintingScreen(this.painting, {Key? key}) : super(key: key);
+  const FullPaintingView(this.painting, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

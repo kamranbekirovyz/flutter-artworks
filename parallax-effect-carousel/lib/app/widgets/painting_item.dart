@@ -1,8 +1,6 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:app/app/data/painting.dart';
-import 'package:app/app/view/full_painting_screen.dart';
-import 'package:app/app/view/magical_hero.dart';
+import 'package:app/app/views/full_painting_view.dart';
+import 'package:app/app/widgets/magical_hero.dart';
 import 'package:flutter/material.dart';
 
 class PaintingItem extends StatelessWidget {
@@ -25,7 +23,7 @@ class PaintingItem extends StatelessWidget {
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (_) {
-              return FullPaintingScreen(painting);
+              return FullPaintingView(painting);
             },
           ),
         );
@@ -53,7 +51,7 @@ class PaintingItem extends StatelessWidget {
               tag: '${painting.hashCode}-name',
               child: Text(
                 painting.name,
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.white,
                   fontSize: 20.0,
                   fontWeight: FontWeight.w600,
