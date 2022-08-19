@@ -1,7 +1,7 @@
 import 'package:flutter/painting.dart';
 
 const currentIndicatorColor = Color(0xFFFFFFFF);
-const animatingIndicatorColor = Color.fromRGBO(193, 192, 191, 1.0);
+const animatingIndicatorColor = Color(0xffFFFFFF);
 const otherIndicatorColor = Color.fromRGBO(100, 99, 97, 1.0);
 final welcomeColor = currentIndicatorColor.withOpacity(.6);
 const titleColor = currentIndicatorColor;

@@ -5,6 +5,7 @@ import 'package:app/app/data/slides.dart';
 import 'package:app/app/utilities/theme_globals.dart';
 import 'package:app/app/widgets/animated_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class OnboardingView extends StatefulWidget {
   const OnboardingView({
@@ -28,7 +29,7 @@ class OnboardingViewState extends State<OnboardingView> with SingleTickerProvide
 
     _animationController = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 50),
+      duration: const Duration(seconds: 5),
     );
 
     _prepareContentForIndex(0);
@@ -52,7 +53,7 @@ class OnboardingViewState extends State<OnboardingView> with SingleTickerProvide
 
   Future<void> _prepareContentForIndex(int index) async {
     _stopAndResetAnimation();
-    _animationController.duration = const Duration(seconds: 50);
+    _animationController.duration = const Duration(seconds: 5);
     _restartAnimation();
 
     setState(() {});
@@ -85,57 +86,66 @@ class OnboardingViewState extends State<OnboardingView> with SingleTickerProvide
   Widget build(BuildContext context) {
     final indicatorTopPadding_ = Platform.isIOS ? MediaQuery.of(context).padding.top + 12 : 40.0;
 
-    return GestureDetector(
-      onLongPressStart: (_) {
-        _animationController.stop();
-      },
-      onLongPressEnd: (_) {
-        _animationController.forward();
-      },
-      child: Material(
-        color: Colors.black,
-        child: Stack(
-          children: [
-            PageView.builder(
-              physics: const NeverScrollableScrollPhysics(),
-              onPageChanged: (int index) {
-                _currentIndex = index;
-                _prepareContentForIndex(_currentIndex);
-              },
-              controller: _pageController,
-              itemCount: slides.length,
-              itemBuilder: (_, int index) {
-                final story = slides.elementAt(index);
+    /// Since background is black, for better view and visibility setting
+    /// statusbar element colors to white
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: SystemUiOverlayStyle.light,
+      child: GestureDetector(
+        onLongPressStart: (_) {
+          _animationController.stop();
+        },
+        onLongPressEnd: (_) {
+          _animationController.forward();
+        },
+        child: Material(
+          color: Colors.black,
+          child: Stack(
+            children: [
+              PageView.builder(
+                physics: const NeverScrollableScrollPhysics(),
+                onPageChanged: (int index) {
+                  _currentIndex = index;
+                  _prepareContentForIndex(_currentIndex);
+                },
+                controller: _pageController,
+                itemCount: slides.length,
+                itemBuilder: (_, int index) {
+                  final story = slides.elementAt(index);
 
-                return Stack(
-                  children: [
-                    Positioned.fill(
-                      child: Image.asset(story.media),
-                    ),
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: _buildRight(index),
-                    ),
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: _buildLeft(index),
-                    ),
-                    Positioned(
-                      left: 20.0,
-                      top: 32.0 + indicatorTopPadding_,
-                      child: _buildOverlay(story),
-                    ),
-                  ],
-                );
-              },
-            ),
-            Positioned(
-              top: indicatorTopPadding_,
-              left: 10.0,
-              right: 10.0,
-              child: _buildIndicators(),
-            ),
-          ],
+                  return Stack(
+                    children: [
+                      Positioned.fill(
+                        child: Align(
+                          alignment: Alignment.bottomCenter,
+                          child: Image.asset(story.media),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: _buildRight(index),
+                      ),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: _buildLeft(index),
+                      ),
+                      Positioned(
+                        left: 20.0,
+                        top: 32.0 + indicatorTopPadding_,
+                        right: 20.0,
+                        child: _buildOverlay(story),
+                      ),
+                    ],
+                  );
+                },
+              ),
+              Positioned(
+                top: indicatorTopPadding_,
+                left: 10.0,
+                right: 10.0,
+                child: _buildIndicators(),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -210,24 +220,34 @@ class OnboardingViewState extends State<OnboardingView> with SingleTickerProvide
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          '',
+          'Welcome to Tentony',
           style: TextStyle(
             fontSize: 18.0,
             color: welcomeColor,
+            height: 24 / 18,
             fontWeight: FontWeight.w500,
           ),
         ),
-        // Row(
-        //   children: [
-        //     Container(
-        //       width: width - 72.0,
-        //       padding: const EdgeInsets.only(top: 4.0),
-        //       child: Text(story.title),
-        //     ),
-        //   ],
-        // ),
-        // const SizedBox(height: 12.0),
-        // Text(story.subtitle)
+        const SizedBox(height: 24.0),
+        Text(
+          story.title,
+          style: const TextStyle(
+            fontSize: 32.0,
+            color: titleColor,
+            height: 40 / 32,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        const SizedBox(height: 12.0),
+        Text(
+          story.subtitle,
+          style: const TextStyle(
+            fontSize: 14.0,
+            color: subtitleColor,
+            height: 24 / 14,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
       ],
     );
   }
