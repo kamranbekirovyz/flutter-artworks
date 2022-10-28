@@ -16,7 +16,7 @@ class PageSlider extends StatelessWidget {
     super.key,
   }) {
     _pageController = PageController(
-      viewportFraction: 0.9,
+      viewportFraction: 0.81,
       initialPage: initialPage,
     );
     assert(initialPage >= 0);
