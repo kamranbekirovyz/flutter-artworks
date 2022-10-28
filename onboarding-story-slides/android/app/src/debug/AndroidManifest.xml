@@ -1,5 +1,0 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="tech.porelarte.onboarding_story_slides">
-    
-    <uses-permission android:name="android.permission.INTERNET"/>
-</manifest>
