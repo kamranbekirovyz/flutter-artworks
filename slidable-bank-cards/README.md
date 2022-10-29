@@ -6,4 +6,4 @@ LinkedIn post and animation GIF: <a href="https://www.linkedin.com/posts/amirali
 
 <br/>
 
-<img src="https://github.com/porelarte/flutter-artworks/blob/master/parallax-effect-carousel/_external/example.gif?raw=true" alt="example.gif"> 
+<img src="https://github.com/porelarte/flutter-artworks/blob/master/slidable-bank-cards/_external/example.gif?raw=true" alt="example.gif"> 
