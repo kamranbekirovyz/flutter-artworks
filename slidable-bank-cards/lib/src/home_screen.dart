@@ -8,8 +8,30 @@ import 'package:slidable_bank_cards/src/models/payment_history_model.dart';
 import 'package:slidable_bank_cards/src/page_slider.dart';
 import 'package:slidable_bank_cards/src/payment_history_item.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  late final PageController _pageController;
+
+  @override
+  void initState() {
+    super.initState();
+    _pageController = PageController(
+      viewportFraction: 0.77,
+      initialPage: 0,
+    );
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +59,8 @@ class HomeScreen extends StatelessWidget {
           SizedBox(
             height: statusBarHeight + 336.0,
             child: PageSlider(
-              bankCards.map((e) => BankCardItem(e)).toList(),
+              pageController: _pageController,
+              children: bankCards.map((e) => BankCardItem(e)).toList(),
             ),
           ),
           Positioned(

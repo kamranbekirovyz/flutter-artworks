@@ -1,16 +1,9 @@
-# slidable_bank_cards
+# slidable-bank-cards
 
-A new Flutter project.
+<a href="https://www.linkedin.com/in/amirali-shukurov/">Amirali Shukurov</a> challenged me on LinkedIn whether the design and animation he shared can be achieved using Flutter? While drinking tea (Azerbaijani one), I developed the same animation 🤓.
 
-## Getting Started
+LinkedIn post and animation GIF: <a href="https://www.linkedin.com/posts/amirali-shukurov_figma-ui-ux-activity-6991732567628525568-mILa/">Albee Shen</a>  
 
-This project is a starting point for a Flutter application.
+<br/>
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<img src="https://github.com/porelarte/flutter-artworks/blob/master/parallax-effect-carousel/_external/example.gif?raw=true" alt="example.gif"> 

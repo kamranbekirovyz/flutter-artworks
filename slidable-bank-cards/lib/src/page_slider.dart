@@ -2,62 +2,36 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-class PageSlider extends StatefulWidget {
-  final List<Widget> cards;
+class PageSlider extends StatelessWidget {
+  final PageController pageController;
+  final List<Widget> children;
 
-  const PageSlider(
-    this.cards, {
+  const PageSlider({
+    required this.pageController,
+    required this.children,
     super.key,
   });
-
-  @override
-  State<PageSlider> createState() => _PageSliderState();
-}
-
-class _PageSliderState extends State<PageSlider> {
-  late final PageController _pageController;
-
-  @override
-  void initState() {
-    super.initState();
-
-    _pageController = PageController(
-      viewportFraction: 0.77,
-      initialPage: 0,
-    );
-  }
-
-  @override
-  void dispose() {
-    _pageController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
     return PageView.builder(
       padEnds: false,
-      controller: _pageController,
+      controller: pageController,
       clipBehavior: Clip.none,
-      itemCount: widget.cards.length,
+      itemCount: children.length,
       scrollDirection: Axis.horizontal,
       itemBuilder: (context, index) {
-        final bankCard = widget.cards.elementAt(index);
-        final isFirst = index == 0;
-        final isLast = index == widget.cards.length - 1;
+        final child_ = children.elementAt(index);
 
         return Padding(
-          padding: EdgeInsets.only(
-            left: isFirst ? 16.0 : 0.0,
-            right: isLast ? 16.0 : 0.0,
-          ),
+          padding: const EdgeInsets.only(left: 16.0),
           child: AnimatedBuilder(
-            animation: _pageController,
+            animation: pageController,
             builder: (context, child) {
               double value = 1.0;
 
-              if (_pageController.position.haveDimensions) {
-                value = _pageController.page! - index;
+              if (pageController.hasClients && pageController.position.hasContentDimensions) {
+                value = pageController.page! - index;
 
                 if (value >= 0) {
                   double lowerLimit_ = 0.1;
@@ -73,19 +47,20 @@ class _PageSliderState extends State<PageSlider> {
               }
 
               double itemOffset = 0;
-              var position = _pageController.position;
-              if (position.hasPixels && position.hasContentDimensions) {
-                var _page = _pageController.page;
-                if (_page != null) {
-                  itemOffset = _page - index;
+              final page = pageController.position.hasContentDimensions ? pageController.page! : 0.0;
+
+              if (pageController.position.hasContentDimensions && pageController.position.hasPixels) {
+                var page_ = pageController.page;
+                if (page_ != null) {
+                  itemOffset = page_ - index;
                 }
               } else {
-                BuildContext storageContext = _pageController.position.context.storageContext;
+                BuildContext storageContext = pageController.position.context.storageContext;
                 final double? previousSavedPosition = PageStorage.of(storageContext)?.readState(storageContext) as double?;
                 if (previousSavedPosition != null) {
                   itemOffset = previousSavedPosition - index.toDouble();
                 } else {
-                  itemOffset = _pageController.page! - index.toDouble();
+                  itemOffset = page - index.toDouble();
                 }
               }
 
@@ -93,16 +68,18 @@ class _PageSliderState extends State<PageSlider> {
               final distortionValue = Curves.easeOut.transform(distortionRatio);
 
               return Transform.scale(
-                // duration: const Duration(milliseconds: 50),
-                scale: _pageController.page! < index ? distortionValue : 1.0,
+                scale: page < index ? distortionValue : 1.0,
                 child: Container(
-                  // duration: kThemeAnimationDuration,
-                  transform: Matrix4.translationValues(0.0, (1 - distortionRatio) * 40, 0.0),
+                  transform: Matrix4.translationValues(
+                    -(1 - distortionRatio) * 45,
+                    (1 - distortionRatio) * 45,
+                    0.0,
+                  ),
                   alignment: Alignment.center,
                   child: Transform(
                     transform: Matrix4.identity()
                       ..rotateZ(
-                        _pageController.page! > index ? value : 0.0,
+                        page > index ? value : 0.0,
                       ),
                     alignment: Alignment.center,
                     child: child,
@@ -110,7 +87,7 @@ class _PageSliderState extends State<PageSlider> {
                 ),
               );
             },
-            child: bankCard,
+            child: child_,
           ),
         );
       },
