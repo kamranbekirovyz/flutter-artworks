@@ -17,6 +17,22 @@ const bankCards = [
     numbers: '*** 4512',
     color: Color(0xff2567F9),
   ),
+  BankCardModel(
+    type: 'Business',
+    balance: 674213.39,
+    validThru: '01/27',
+    provider: 'mc',
+    numbers: '*** 3179',
+    color: Color(0xff9747FF),
+  ),
+  BankCardModel(
+    type: 'Credit',
+    balance: 674213.39,
+    validThru: '01/27',
+    provider: 'mc',
+    numbers: '*** 3570',
+    color: Color.fromARGB(255, 8, 202, 228),
+  ),
 ];
 
 class BankCardModel {
